@@ -1,7 +1,7 @@
 import { Router } from "express";
 import * as CT from "./Category.controller.js";
 import * as CTV from "./CategoryValidation.js";
-import { validate } from "../../middleWare/Validation.js";
+import { validate } from "../../middleWare/Validation/Validation.js";
 
 
 
@@ -13,7 +13,9 @@ const CategoryRouter = Router();
 
 
 
-CategoryRouter.get("/Get", CT.GetCategories);
+
+
+CategoryRouter.get( "/GetAllCategoriesWithInfo", CT.GetAllCategoriesWithProducts);
 
 CategoryRouter.post("/Create",validate(CTV.createCategorySchema), CT.CreateCategory);
 

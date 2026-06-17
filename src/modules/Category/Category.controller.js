@@ -1,5 +1,5 @@
 import CategoryModel from "../../../DB/Models/Category.model.js";
-import { asyncHandler } from "../../middleWare/AsyncHandler.js";
+import { asyncHandler } from "../../middleWare/AsyncHandler/AsyncHandler.js";
 import { invalidateCache } from "../../utils/Redis/CacheInvalidator.js";
 import { CACHE_KEYS } from "../../utils/Redis/cacheKeys.js";
 import redisClient from "../../utils/Redis/redisClient.js";
@@ -9,27 +9,37 @@ import slugify from "slugify";
 
 
 
-// --- Get Categories ---
-export const GetCategories = asyncHandler(async (req,res,next)=>{
 
 
-    const CacheKey = CACHE_KEYS.NewCategory("'ALL'");
-    const CacheDate= await redisClient.get(CacheKey);
-
-    if(CacheDate){
-        const Data = JSON.parse(CacheDate)
-        return res.status(200).json({status:"Success",source:"Cache", Count:Data.length ,date:Data})
-    }
-
-    const Categories = await CategoryModel.find();
+// --> GetAllCategoriesWithProducts
+export const GetAllCategoriesWithProducts = asyncHandler(async (req, res, next) => {
     
-    await redisClient.set(CacheKey,JSON.stringify(Categories,{Ex:3000}))
+   
+    const categories = await CategoryModel.aggregate([
+        {
+          
+            $lookup: {
+                from: "products",         
+                localField: "_id",        
+                foreignField: "CategoryId", 
+                as: "products"           
+            }
+        },
+        {
+       
+            $project: {
+                Name: 1,
+                Slug: 1,
+                products: 1 
+            }
+        }
+    ]);
 
-    if(Categories.length > 0){
-        res.status(200).json({status:"Success",source:"DataBase", Count:Categories.length , date:Categories})
-    }
+    return res.status(200).json({ message: "Success", categories });
+});
 
-})
+
+
 // --- Create Category ---
 export const CreateCategory = asyncHandler(async (req,res,next)=>{
 

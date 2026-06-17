@@ -1,7 +1,6 @@
 import mongoose, { model } from "mongoose";
 
 const ProductSchema = new mongoose.Schema({
-    
   CategoryId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
@@ -10,36 +9,59 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Description:{
-    type:String
+  Description: {
+    type: String,
   },
-  ImageUrl: {
-    secure_url: { type: String, default: null },
-    public_id: { type: String, default: null },
-  }, 
-  Stock: { 
+  Stock: {
     type: Number,
     required: true,
     default: 0,
-    min: 0 
-   },
-  Price: {
+    min: 0,
+  },
+  ImageUrl: {
+        secure_url: { type: String },
+        public_id: { type: String }
+  },
+  Brand: {
+    type: String,
+    default: "Wyze",
+  },
+  ColorName: { type: String },
+  ColorHex: { type: String },
+  BasePrice: {
     type: Number,
     required: true,
   },
-  HasVariants: { 
+  HasOffer: {
     type: Boolean,
-    default: false
-   },
-  Variants: [{
-      name: { type: String }, 
-      colorHex: { type: String }, 
-      priceModifier: { type: Number, default: 0 },
+   
+  },
+  TotalOffer: {
+    type: Number,
+  },
+  PriceAfterOffer: {
+    type: Number,
+  },
+  HasVariants: {
+    type: Boolean,
+    default: false,
+  },
+  stock: { type: Number, required: true, default: 0 },
+  Variants: [
+    {
+      ColorName: { type: String },
+      ColorHex: { type: String },
       sku: { type: String },
-    },],
-  DiscountBadge: { type: String }, 
+      ImageUrl: {
+        secure_url: { type: String },
+        public_id: { type: String }
+       }
+    },
+  ],
 });
 
-ProductSchema.index({ name: 'text' });
+ProductSchema.index({ ProductName: "text" });
 
-const ProductModel = model("Product",ProductSchema)
+const ProductModel = model("Product", ProductSchema);
+
+export default ProductModel;

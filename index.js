@@ -3,6 +3,8 @@ import './src/utils/Redis/RedisClient.js';
 import express from 'express';
 import ConnectionDB from './DB/ConnectionDB.js';
 import CategoryRouter from './src/modules/Category/Category.routes.js';
+import ProductRouter from './src/modules/Product/Product.routes.js';
+import CartRouter from './src/modules/Cart/Cart.routes.js';
 
 const app = express();
 const port = process.env.Port || 3000;
@@ -18,6 +20,11 @@ ConnectionDB()
 // ==================================
 
 app.use("/api/v1/categories",CategoryRouter)
+
+
+app.use("/api/v1/Products",ProductRouter)
+
+app.use("/api/v1/Cart", CartRouter)
 
 
 // ==================================

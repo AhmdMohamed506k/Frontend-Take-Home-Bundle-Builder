@@ -3,7 +3,7 @@ import { CACHE_KEYS } from "./cacheKeys.js";
 
 
 export const invalidateCache =async (action, data = {})=>{
-    const { CategoryId } = data;
+    const { CategoryId ,ProductId} = data;
     let keysToDel = [];
    
 
@@ -17,6 +17,23 @@ export const invalidateCache =async (action, data = {})=>{
         break;
 
 
+        case "CategoryProducts_MODIFIED":
+            if (CategoryId) {
+                keysToDel.push(CACHE_KEYS.CategoryProducts(CategoryId))
+            }
+            
+
+        break;
+        
+
+
+        case "ProductInfo_MODIFIED":
+            if(ProductId){
+                keysToDel.push(CACHE_KEYS.ProductInfo(ProductId))
+            }
+            
+
+        break;
 
 
     
