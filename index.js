@@ -12,22 +12,24 @@ const port = process.env.Port || 3000;
 
 app.use(express.json())
 
-
+// ======DBConnection========
 ConnectionDB()
+// ==========================
 
 
 
-// ==================================
-
+// ================Routers==================
 app.use("/api/v1/categories",CategoryRouter)
-
 
 app.use("/api/v1/Products",ProductRouter)
 
 app.use("/api/v1/Cart", CartRouter)
+// ========================================
 
 
-// ==================================
+
+
+
 
 app.get('/', (req, res) => {res.send('Welcome at Take-Home Bundle Builder API !');});
 
@@ -42,6 +44,9 @@ app.use((err, req, res, next) => {
         message: err.message || "Internal Server Error" 
     });
 });
+
+
+
 
 app.listen(port, () => {
     console.log(`Server running on port ${process.env.Port}`);

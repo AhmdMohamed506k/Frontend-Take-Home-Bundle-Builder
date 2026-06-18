@@ -34,13 +34,16 @@ const ProductSchema = new mongoose.Schema({
   },
   HasOffer: {
     type: Boolean,
+    default:false
    
   },
   TotalOffer: {
     type: Number,
+    default:0
   },
   PriceAfterOffer: {
     type: Number,
+    default:0
   },
   HasVariants: {
     type: Boolean,

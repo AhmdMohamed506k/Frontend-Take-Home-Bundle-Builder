@@ -72,9 +72,6 @@ export const AddNewProduct = asyncHandler(async (req, res, next) => {
     return res.status(201).json({ message: "Product created successfully", newProduct });
 });
 
-
-
-
 // --> UpdateProduct
 export const UpdateProduct = asyncHandler(async (req, res, next) => {
     const { productId } = req.params;
@@ -165,3 +162,4 @@ export const DeleteProduct = asyncHandler(async (req, res, next) => {
 
     return res.status(200).json({ message: "Product deleted successfully" });
 });
+

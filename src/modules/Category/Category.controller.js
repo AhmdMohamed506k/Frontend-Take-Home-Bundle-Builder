@@ -37,9 +37,6 @@ export const GetAllCategoriesWithProducts = asyncHandler(async (req, res, next) 
 
     return res.status(200).json({ message: "Success", categories });
 });
-
-
-
 // --- Create Category ---
 export const CreateCategory = asyncHandler(async (req,res,next)=>{
 
