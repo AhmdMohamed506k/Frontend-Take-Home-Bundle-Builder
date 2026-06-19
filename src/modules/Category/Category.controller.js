@@ -1,7 +1,7 @@
 import CategoryModel from "../../../DB/Models/Category.model.js";
 import { asyncHandler } from "../../middleWare/AsyncHandler/AsyncHandler.js";
 import { invalidateCache } from "../../utils/Redis/CacheInvalidator.js";
-import { CACHE_KEYS } from "../../utils/Redis/cacheKeys.js";
+import { CACHE_KEYS } from "../../utils/Redis/CacheKeys.js";
 import redisClient from "../../utils/Redis/redisClient.js";
 import slugify from "slugify";
 

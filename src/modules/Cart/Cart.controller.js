@@ -2,7 +2,7 @@ import { asyncHandler } from "../../middleWare/AsyncHandler/AsyncHandler.js";
 import ProductModel from "../../../DB/Models/Product.model.js";
 import CartModel from "../../../DB/Models/Cart.model.js";
 import { nanoid } from 'nanoid';
-import { CACHE_KEYS } from "../../utils/Redis/cacheKeys.js";
+import { CACHE_KEYS } from "../../utils/Redis/CacheKeys.js";
 import { invalidateCache } from "../../utils/Redis/CacheInvalidator.js";
 import redisClient from "../../utils/Redis/redisClient.js";
 import Stripe from 'stripe';
