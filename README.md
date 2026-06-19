@@ -31,7 +31,8 @@ src/
 
 1 - Clone the repository:
 
-git clone [https://github.com/AhmdMohamed506k/Frontend-Take-Home-Bundle-Builder.git](https://github.com/AhmdMohamed506k/Frontend-Take-Home-Bundle-Builder.git)cd Frontend-Take-Home-Bundle-Builder
+git clone [https://github.com/AhmdMohamed506k/Frontend-Take-Home-Bundle-Builder.git](https://github.com/AhmdMohamed506k/Frontend-Take-Home-Bundle-Builder.git)
+   cd Frontend-Take-Home-Bundle-Builder
 
 
 
@@ -42,12 +43,12 @@ npm install
 
 3 - Configure environment variables (Create a .env file in the root directory):
 
-Port = 3000
-DataBaseURI = <your_mongodb_uri>
-CloudinaryCloudName = <your_Cloudinary_Cloud_Name>
-CloudinaryApiKey = <your_Cloudinary_Api_Key>
-CloudinaryApiSecret = <your_Cloudinary_Api_Secret>
-RedisURL= <your_redis_cloud_url>
+Port = 3000,
+DataBaseURI = <your_mongodb_uri>,
+CloudinaryCloudName = <your_Cloudinary_Cloud_Name>,
+CloudinaryApiKey = <your_Cloudinary_Api_Key>,
+CloudinaryApiSecret = <your_Cloudinary_Api_Secret>,
+RedisURL= <your_redis_cloud_url>,
 StripeSecretKey = <your_stripe_secret_key>
 
 
