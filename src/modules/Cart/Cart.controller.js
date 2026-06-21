@@ -75,8 +75,16 @@ export const GetCart = asyncHandler(async (req, res, next) => {
     }
 
     
-    const cart = await CartModel.findOne({cartId: CartId }).populate('Products.productId');
+   const cart = await CartModel.findOne({ cartId: CartId }).populate({
+        path: 'Products.productId',
+        populate: {
+            path: 'CategoryId', 
+            select: 'Name'      
+        }
+    });
     
+    
+
     
     if (cart) {
         await redisClient.set(cacheKey, JSON.stringify(cart),{EX:3000}); 
