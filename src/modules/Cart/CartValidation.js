@@ -33,3 +33,9 @@ export const createCheckoutSchema = {
         cartId: joi.string().required()
     }).required()
 };
+
+export const ClearCartSchema = {
+    params: joi.object({
+        cartId: joi.string().required()
+    }).required()
+};

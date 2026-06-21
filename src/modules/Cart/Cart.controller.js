@@ -183,3 +183,20 @@ export const CreateCheckoutSession = asyncHandler(async (req, res, next) => {
     
     return res.status(200).json({ url: session.url });
 });
+
+
+// Back-end Controller
+export const clearCart = asyncHandler(async(req,res,next)=>{
+
+    const { cartId } = req.params;
+
+       
+    const cart = await CartModel.findOneAndDelete({ cartId });
+        
+    if (!cart) {
+        return res.status(404).json({ message: "Cart not found" });
+    }
+
+    res.status(200).json({ message: "Cart cleared successfully" });
+   
+})

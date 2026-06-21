@@ -25,6 +25,9 @@ CartRouter.put("/UpdateProductQuantity",validate(CRV.updateQuantitySchema),  CR.
 // --> Remove-Product-From-Cart-Routes
 CartRouter.delete("/RemoveFromCart",validate(CRV.RemoveFromCartSchema),  CR.RemoveFromCart);
 
+// --> clear-Cart-Routes
+CartRouter.delete("/ClearCart/:cartId",validate(CRV.ClearCartSchema),  CR.clearCart);
+
 
 
 
