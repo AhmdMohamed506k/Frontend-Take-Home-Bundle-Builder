@@ -75,7 +75,7 @@ export const GetCart = asyncHandler(async (req, res, next) => {
     }
 
     
-    const cart = await CartModel.findOne({ CartId }).populate('Products.productId');
+    const cart = await CartModel.findOne({cartId: CartId }).populate('Products.productId');
     
     
     if (cart) {
